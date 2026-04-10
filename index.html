@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ben Mingle, CISSP, CISA</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #f5f7ff;
+      --bg-card:   #ffffff;
+      --bg-hover:  #eef1fb;
+      --border:    #dde3f5;
+      --accent:    #0ea5e9;
+      --accent2:   #f43f8e;
+      --green:     #8b5cf6;
+      --text:      #111827;
+      --muted:     #6b7280;
+      --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+      --font-sans: 'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: color .2s; }
+    a:hover { color: #80acff; }
+
+    /* ── Google Fonts ── */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+    /* ── Layout ── */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 6rem 0; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(245, 247, 255, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: .02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: .85rem;
+      font-family: var(--font-mono);
+      color: var(--muted);
+      letter-spacing: .05em;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(14,165,233,.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 70%, rgba(244,63,142,.10) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 40% at 50% 10%, rgba(139,92,246,.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Subtle grid */
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(14,165,233,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14,165,233,.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-tag {
+      font-family: var(--font-mono);
+      font-size: .8rem;
+      color: var(--green);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .hero-tag::before {
+      content: '';
+      display: inline-block;
+      width: 28px; height: 1px;
+      background: var(--green);
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: .5rem;
+    }
+    h1 .dim { color: var(--muted); font-weight: 300; }
+
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      font-family: var(--font-mono);
+    }
+    .hero-subtitle .accent { color: var(--accent); }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 540px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .65rem 1.4rem;
+      border-radius: 6px;
+      font-size: .9rem;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      letter-spacing: .02em;
+      transition: all .2s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+    }
+    .btn-primary:hover { background: #3a7df5; color: #fff; transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: .7rem;
+      letter-spacing: .1em;
+      animation: bounce 2s infinite;
+    }
+    .hero-scroll svg { width: 16px; opacity: .5; }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── Section headers ── */
+    .section-header { margin-bottom: 3rem; }
+    .section-tag {
+      font-family: var(--font-mono);
+      font-size: .75rem;
+      color: var(--accent);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+    }
+    .section-line {
+      width: 40px; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      margin-top: .75rem;
+      border-radius: 2px;
+    }
+
+    /* ── About ── */
+    #about { border-top: 1px solid var(--border); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 1rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--text); }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      transition: border-color .2s;
+    }
+    .stat-card:hover { border-color: var(--accent); }
+    .stat-num {
+      font-family: var(--font-mono);
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: .2rem;
+    }
+    .stat-label { font-size: .8rem; color: var(--muted); }
+
+    /* ── Skills ── */
+    #skills { border-top: 1px solid var(--border); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .skill-group {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .skill-group:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .skill-group-title {
+      font-family: var(--font-mono);
+      font-size: .78rem;
+      color: var(--accent);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .skill-group-title svg { width: 14px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .skill-tag {
+      background: rgba(14,165,233,.08);
+      border: 1px solid rgba(14,165,233,.2);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: .78rem;
+      padding: .3rem .7rem;
+      border-radius: 4px;
+    }
+
+    /* ── Projects ── */
+    #projects { border-top: 1px solid var(--border); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .project-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .project-icon {
+      width: 40px; height: 40px;
+      background: rgba(14,165,233,.1);
+      border: 1px solid rgba(14,165,233,.2);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+    .project-links { display: flex; gap: .5rem; }
+    .project-links a {
+      color: var(--muted);
+      transition: color .2s;
+    }
+    .project-links a:hover { color: var(--accent); }
+    .project-links svg { width: 16px; }
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -.01em;
+    }
+    .project-desc { font-size: .9rem; color: var(--muted); line-height: 1.7; }
+    .project-stack { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; }
+    .stack-tag {
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      color: var(--green);
+      background: rgba(139,92,246,.07);
+      border: 1px solid rgba(139,92,246,.2);
+      padding: .2rem .55rem;
+      border-radius: 4px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+    }
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .footer-left {
+      font-family: var(--font-mono);
+      font-size: .82rem;
+      color: var(--muted);
+    }
+    .footer-left span { color: var(--accent); }
+    .social-links { display: flex; gap: 1rem; }
+    .social-links a {
+      color: var(--muted);
+      transition: color .2s;
+      display: flex; align-items: center;
+    }
+    .social-links a:hover { color: var(--accent); }
+    .social-links svg { width: 20px; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: #c7d0e8; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+    /* ── Responsive ── */
+    @media (max-width: 680px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .nav-links { display: none; }
+      .hero-scroll { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ── -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">mingle<span>.</span>dev</div>
+      <ul class="nav-links">
+        <li><a href="#about">about</a></li>
+        <li><a href="#skills">stack</a></li>
+        <li><a href="#projects">projects</a></li>
+        <li><a href="mailto:benjaminjmingle@gmail.com">contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-tag">Available for opportunities</div>
+        <h1>Ben Mingle<span class="dim">, CISSP, CISA.</span></h1>
+        <div class="hero-subtitle">
+          <span class="accent">~/</span> grc · security · cissp · cisa · pci-qsa
+        </div>
+        <p class="hero-desc">
+          Senior GRC &amp; Information Security Consultant with 15+ years guiding
+          organizations through complex regulatory compliance and risk management.
+          After hours: home lab operator, automation enthusiast, and firm believer
+          that everyone should own their own infrastructure.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            View Projects
+          </a>
+          <a href="mailto:benjaminjmingle@gmail.com" class="btn btn-ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+            Get In Touch
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      scroll
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ── About ── -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">01. about</div>
+        <h2>A bit about me</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            Hey, I'm <strong>Ben Mingle, CISSP, CISA</strong> — a Senior GRC and Information
+            Security Consultant with over 15 years of experience helping organizations
+            navigate complex regulatory compliance and security risk. I've advised
+            C-Suite executives and led engagements across a broad range of
+            regulatory compliance and security risk initiatives at firms ranging
+            from Fortune 100 companies to federal agencies.
+          </p>
+          <p>
+            My career spans Booz Allen Hamilton, Ernst &amp; Young, Protiviti,
+            Coalfire, Optiv Security, Schellman, and Online Business Systems — giving
+            me deep hands-on experience in security assessments, compliance program
+            management, and technical configuration testing across on-premises, cloud,
+            and hybrid environments.
+          </p>
+          <p>
+            Outside of client work, I'm an unrepentant tinkerer. I run a self-hosted
+            home lab on <strong>Proxmox and Coolify</strong>, automate whatever I can, and
+            believe that owning your infrastructure is a right, not a luxury. If it
+            can be scripted, it should be. Privacy is a human right. Encryption
+            is not a crime. Key disclosure laws are unethical.
+          </p>
+          <p style="margin-top: 1.25rem;">
+            <a href="https://www.linkedin.com/in/benjaminmingle/" target="_blank" rel="noopener" style="font-family: var(--font-mono); font-size: .85rem; margin-right: 1.5rem;">
+              linkedin ↗
+            </a>
+            <a href="mailto:benjaminjmingle@gmail.com" style="font-family: var(--font-mono); font-size: .85rem;">
+              benjaminjmingle@gmail.com ↗
+            </a>
+          </p>
+        </div>
+        <div>
+          <div class="about-stats">
+            <div class="stat-card">
+              <div class="stat-num">15+</div>
+              <div class="stat-label">Years in InfoSec &amp; GRC</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">2</div>
+              <div class="stat-label">Active certifications (CISSP · CISA)</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">8</div>
+              <div class="stat-label">Employers across Big 4, consulting &amp; boutique firms</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">∞</div>
+              <div class="stat-label">Home lab services (send help)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Skills ── -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">02. stack</div>
+        <h2>The home lab stack</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid">
+
+        <div class="skill-group">
+          <div class="skill-group-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            Compute
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Dell PowerEdge T30</span>
+            <span class="skill-tag">Proxmox VE</span>
+            <span class="skill-tag">Linux VMs</span>
+            <span class="skill-tag">LXC Containers</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            Networking
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Firewalla Purple</span>
+            <span class="skill-tag">Unifi Switches</span>
+            <span class="skill-tag">Unifi APs</span>
+            <span class="skill-tag">VLANs</span>
+            <span class="skill-tag">IDS/IPS</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            Deployment
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Coolify</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Docker Compose</span>
+            <span class="skill-tag">Reverse Proxy</span>
+            <span class="skill-tag">SSL/TLS</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+            Self-Hosted Services
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Tailscale</span>
+            <span class="skill-tag">Immich</span>
+            <span class="skill-tag">Mealio</span>
+            <span class="skill-tag">Authentik</span>
+            <span class="skill-tag">AMP</span>
+            <span class="skill-tag">Grafana</span>
+            <span class="skill-tag">Home Assistant</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Projects ── -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">03. projects</div>
+        <h2>Things I've built</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-top">
+            <div class="project-icon">🏠</div>
+            <div class="project-links">
+              <a href="#" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3>Home Lab Dashboard</h3>
+          <p class="project-desc">
+            A custom monitoring dashboard for my self-hosted infrastructure — tracks service uptime, resource usage, and sends alerts when things go sideways.
+          </p>
+          <div class="project-stack">
+            <span class="stack-tag">Next.js</span>
+            <span class="stack-tag">Prometheus</span>
+            <span class="stack-tag">Docker</span>
+            <span class="stack-tag">Grafana</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-top">
+            <div class="project-icon">🤖</div>
+            <div class="project-links">
+              <a href="#" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3>Automation Bot</h3>
+          <p class="project-desc">
+            A personal automation bot that handles routine tasks — scheduled reports, webhook routing, notification aggregation across services I use daily.
+          </p>
+          <div class="project-stack">
+            <span class="stack-tag">Python</span>
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">Redis</span>
+            <span class="stack-tag">Cron</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-top">
+            <div class="project-icon">📦</div>
+            <div class="project-links">
+              <a href="#" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3>Self-Hosted Stack</h3>
+          <p class="project-desc">
+            A curated, documented collection of Docker Compose configs for my home lab — including media, productivity, networking, and observability services.
+          </p>
+          <div class="project-stack">
+            <span class="stack-tag">Docker</span>
+            <span class="stack-tag">Coolify</span>
+            <span class="stack-tag">Traefik</span>
+            <span class="stack-tag">Ansible</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-top">
+            <div class="project-icon">🌐</div>
+            <div class="project-links">
+              <a href="#" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3>This Website</h3>
+          <p class="project-desc">
+            A single-file personal site, self-hosted on Coolify. No frameworks, no build step — just clean HTML and CSS, deployed with a git push.
+          </p>
+          <div class="project-stack">
+            <span class="stack-tag">HTML</span>
+            <span class="stack-tag">CSS</span>
+            <span class="stack-tag">Coolify</span>
+            <span class="stack-tag">Self-hosted</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        Built &amp; self-hosted by <span>Ben Mingle</span> · benjaminjmingle@gmail.com
+      </div>
+      <div class="social-links">
+        <!-- GitHub -->
+        <a href="https://github.com" title="GitHub" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com" title="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <!-- Email -->
+        <a href="mailto:benjaminjmingle@gmail.com" title="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
