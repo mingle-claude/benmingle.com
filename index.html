@@ -239,6 +239,8 @@
     .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 1rem; }
     .about-text p:last-child { margin-bottom: 0; }
     .about-text strong { color: var(--text); }
+    .about-links { margin-top: 1.25rem; }
+    .about-links a { font-family: var(--font-mono); font-size: .85rem; margin-right: 1.5rem; }
 
     .about-stats {
       display: grid;
@@ -319,7 +321,7 @@
       transition: border-color .2s, transform .2s;
     }
     .project-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-    .project-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .project-top { display: flex; align-items: flex-start; }
     .project-icon {
       width: 40px; height: 40px;
       background: rgba(14,165,233,.1);
@@ -474,11 +476,11 @@
             can be scripted, it should be. Privacy is a human right. Encryption
             is not a crime. Key disclosure laws are unethical.
           </p>
-          <p style="margin-top: 1.25rem;">
-            <a href="https://www.linkedin.com/in/benjaminmingle/" target="_blank" rel="noopener noreferrer" style="font-family: var(--font-mono); font-size: .85rem; margin-right: 1.5rem;">
+          <p class="about-links">
+            <a href="https://www.linkedin.com/in/benjaminmingle/" target="_blank" rel="noopener noreferrer">
               linkedin ↗
             </a>
-            <a href="mailto:benjaminjmingle@gmail.com" style="font-family: var(--font-mono); font-size: .85rem;">
+            <a href="mailto:benjaminjmingle@gmail.com">
               benjaminjmingle@gmail.com ↗
             </a>
           </p>
