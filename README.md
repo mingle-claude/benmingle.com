@@ -9,7 +9,7 @@ A single-file (`index.html`) static personal site with no build step, no framewo
 - **Hero** — intro, certifications, and contact CTAs
 - **About** — career background (Booz Allen Hamilton, EY, Protiviti, Coalfire, Optiv, Schellman, OBS) and home lab philosophy
 - **Stack** — home lab hardware and software (Proxmox, Coolify, Docker, Unifi, Tailscale, Grafana, etc.)
-- **Projects** — home lab dashboard, automation bot, self-hosted stack configs, and this site itself
+- **Projects** — Home Lab Infrastructure, Observability Stack, Self-Hosted Productivity, and this site itself
 
 ## Deployment
 
