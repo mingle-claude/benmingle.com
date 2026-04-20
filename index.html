@@ -304,20 +304,20 @@
 
     /* ── Stack ── */
     #stack { border-top: 1px solid var(--border); }
-    .skills-grid {
+    .stack-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.25rem;
     }
-    .skill-group {
+    .stack-group {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1.5rem;
       transition: border-color .2s, transform .2s;
     }
-    .skill-group:hover { border-color: var(--accent2); transform: translateY(-2px); }
-    .skill-group-title {
+    .stack-group:hover { border-color: var(--accent2); transform: translateY(-2px); }
+    .stack-group-title {
       font-family: var(--font-mono);
       font-size: .85rem;
       font-weight: 600;
@@ -327,9 +327,9 @@
       align-items: center;
       gap: .5rem;
     }
-    .skill-group-title svg { width: 14px; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
-    .skill-tag {
+    .stack-group-title svg { width: 14px; }
+    .stack-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .stack-tag {
       font-family: var(--font-mono);
       font-size: .72rem;
       color: var(--accent);
@@ -374,15 +374,6 @@
     }
     .project-desc { font-size: .9rem; color: var(--muted); line-height: 1.7; }
     .project-stack { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; }
-    .stack-tag {
-      font-family: var(--font-mono);
-      font-size: .72rem;
-      color: var(--accent);
-      background: rgba(6,182,212,.07);
-      border: 1px solid rgba(6,182,212,.2);
-      padding: .2rem .55rem;
-      border-radius: 4px;
-    }
 
     /* ── Footer ── */
     footer {
@@ -602,67 +593,67 @@
         <h2>The home lab stack</h2>
         <div class="section-line"></div>
       </div>
-      <div class="skills-grid">
+      <div class="stack-grid">
 
-        <div class="skill-group">
-          <div class="skill-group-title">
+        <div class="stack-group">
+          <div class="stack-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
             Infrastructure
           </div>
-          <div class="skill-tags">
-            <span class="skill-tag">Dell PowerEdge T30</span>
-            <span class="skill-tag">Proxmox VE</span>
-            <span class="skill-tag">Linux VMs</span>
-            <span class="skill-tag">LXC Containers</span>
-            <span class="skill-tag">Firewalla Purple</span>
-            <span class="skill-tag">Unifi Switches</span>
-            <span class="skill-tag">Unifi APs</span>
-            <span class="skill-tag">VLANs</span>
-            <span class="skill-tag">IDS/IPS</span>
+          <div class="stack-tags">
+            <span class="stack-tag">Dell PowerEdge T30</span>
+            <span class="stack-tag">Proxmox VE</span>
+            <span class="stack-tag">Linux VMs</span>
+            <span class="stack-tag">LXC Containers</span>
+            <span class="stack-tag">Firewalla Purple</span>
+            <span class="stack-tag">Unifi Switches</span>
+            <span class="stack-tag">Unifi APs</span>
+            <span class="stack-tag">VLANs</span>
+            <span class="stack-tag">IDS/IPS</span>
           </div>
         </div>
 
-        <div class="skill-group">
-          <div class="skill-group-title">
+        <div class="stack-group">
+          <div class="stack-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
             Deployment
           </div>
-          <div class="skill-tags">
-            <span class="skill-tag">Coolify</span>
-            <span class="skill-tag">Docker</span>
-            <span class="skill-tag">Docker Compose</span>
-            <span class="skill-tag">Reverse Proxy</span>
-            <span class="skill-tag">SSL/TLS</span>
-            <span class="skill-tag">Git</span>
-            <span class="skill-tag">Claude.ai</span>
+          <div class="stack-tags">
+            <span class="stack-tag">Coolify</span>
+            <span class="stack-tag">Docker</span>
+            <span class="stack-tag">Docker Compose</span>
+            <span class="stack-tag">Reverse Proxy</span>
+            <span class="stack-tag">SSL/TLS</span>
+            <span class="stack-tag">Git</span>
+            <span class="stack-tag">Claude.ai</span>
           </div>
         </div>
 
-        <div class="skill-group">
-          <div class="skill-group-title">
+        <div class="stack-group">
+          <div class="stack-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
             Self-Hosted Services
           </div>
-          <div class="skill-tags">
-            <span class="skill-tag">Coolify</span>
-            <span class="skill-tag">benmingle.com</span>
-            <span class="skill-tag">AMP</span>
-            <span class="skill-tag">Grafana</span>
-            <span class="skill-tag">Prometheus</span>
-            <span class="skill-tag">Loki</span>
-            <span class="skill-tag">Home Assistant</span>
-            <span class="skill-tag">Gitea</span>
-            <span class="skill-tag">Immich</span>
-            <span class="skill-tag">UniFi</span>
-            <span class="skill-tag">Nextcloud</span>
-            <span class="skill-tag">Vaultwarden</span>
-            <span class="skill-tag">Homarr</span>
-            <span class="skill-tag">Mealie</span>
-            <span class="skill-tag">TeamSpeak</span>
-            <span class="skill-tag">RomM</span>
-            <span class="skill-tag">Authentik</span>
-            <span class="skill-tag">Paperless</span>
-            <span class="skill-tag">Joplin</span>
+          <div class="stack-tags">
+            <span class="stack-tag">Coolify</span>
+            <span class="stack-tag">benmingle.com</span>
+            <span class="stack-tag">AMP</span>
+            <span class="stack-tag">Grafana</span>
+            <span class="stack-tag">Prometheus</span>
+            <span class="stack-tag">Loki</span>
+            <span class="stack-tag">Home Assistant</span>
+            <span class="stack-tag">Gitea</span>
+            <span class="stack-tag">Immich</span>
+            <span class="stack-tag">UniFi</span>
+            <span class="stack-tag">Nextcloud</span>
+            <span class="stack-tag">Vaultwarden</span>
+            <span class="stack-tag">Homarr</span>
+            <span class="stack-tag">Mealie</span>
+            <span class="stack-tag">TeamSpeak</span>
+            <span class="stack-tag">RomM</span>
+            <span class="stack-tag">Authentik</span>
+            <span class="stack-tag">Paperless</span>
+            <span class="stack-tag">Joplin</span>
           </div>
         </div>
 
