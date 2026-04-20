@@ -291,7 +291,8 @@
       transition: border-color .2s, transform .2s;
     }
     .hobby-card:hover { border-color: var(--accent2); transform: translateY(-2px); }
-    .hobby-icon { font-size: 1.6rem; margin-bottom: .75rem; }
+    .hobby-header { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
+    .hobby-icon { font-size: 1.6rem; }
     .hobby-title {
       font-family: var(--font-mono);
       font-size: .85rem;
@@ -303,20 +304,20 @@
 
     /* ── Stack ── */
     #stack { border-top: 1px solid var(--border); }
-    .skills-grid {
+    .stack-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.25rem;
     }
-    .skill-group {
+    .stack-group {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1.5rem;
       transition: border-color .2s, transform .2s;
     }
-    .skill-group:hover { border-color: var(--accent2); transform: translateY(-2px); }
-    .skill-group-title {
+    .stack-group:hover { border-color: var(--accent2); transform: translateY(-2px); }
+    .stack-group-title {
       font-family: var(--font-mono);
       font-size: .85rem;
       font-weight: 600;
@@ -326,15 +327,15 @@
       align-items: center;
       gap: .5rem;
     }
-    .skill-group-title svg { width: 14px; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
-    .skill-tag {
-      background: rgba(6,182,212,.08);
-      border: 1px solid rgba(6,182,212,.2);
-      color: var(--text);
+    .stack-group-title svg { width: 14px; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .tag {
       font-family: var(--font-mono);
-      font-size: .78rem;
-      padding: .3rem .7rem;
+      font-size: .72rem;
+      color: var(--accent);
+      background: rgba(6,182,212,.07);
+      border: 1px solid rgba(6,182,212,.2);
+      padding: .2rem .55rem;
       border-radius: 4px;
     }
 
@@ -356,7 +357,7 @@
       transition: border-color .2s, transform .2s;
     }
     .project-card:hover { border-color: var(--accent2); transform: translateY(-3px); }
-    .project-top { display: flex; align-items: flex-start; }
+    .project-top { display: flex; align-items: center; gap: .75rem; }
     .project-icon {
       width: 40px; height: 40px;
       background: rgba(6,182,212,.1);
@@ -367,21 +368,12 @@
       font-size: 1.1rem;
     }
     h3 {
-      font-size: 1.05rem;
+      font-family: var(--font-mono);
+      font-size: .85rem;
       font-weight: 600;
-      letter-spacing: -.01em;
     }
     .project-desc { font-size: .9rem; color: var(--muted); line-height: 1.7; }
     .project-stack { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; }
-    .stack-tag {
-      font-family: var(--font-mono);
-      font-size: .72rem;
-      color: var(--accent);
-      background: rgba(6,182,212,.07);
-      border: 1px solid rgba(6,182,212,.2);
-      padding: .2rem .55rem;
-      border-radius: 4px;
-    }
 
     /* ── Footer ── */
     footer {
@@ -558,26 +550,34 @@
       <div class="life-grid">
 
         <div class="hobby-card">
-          <div class="hobby-icon">⛺</div>
-          <div class="hobby-title">Camping</div>
+          <div class="hobby-header">
+            <div class="hobby-icon">⛺</div>
+            <div class="hobby-title">Camping</div>
+          </div>
           <p class="hobby-desc">Getting out into the Colorado backcountry whenever possible. Roxanne co-pilots every trip.</p>
         </div>
 
         <div class="hobby-card">
-          <div class="hobby-icon">🛻</div>
-          <div class="hobby-title">Off-Roading</div>
+          <div class="hobby-header">
+            <div class="hobby-icon">🛻</div>
+            <div class="hobby-title">Off-Roading</div>
+          </div>
           <p class="hobby-desc">Running trails in a truck I've modified and upgraded.</p>
         </div>
 
         <div class="hobby-card">
-          <div class="hobby-icon">🎣</div>
-          <div class="hobby-title">Fly Fishing</div>
+          <div class="hobby-header">
+            <div class="hobby-icon">🎣</div>
+            <div class="hobby-title">Fly Fishing</div>
+          </div>
           <p class="hobby-desc">Colorado has no shortage of good water. Slow mornings on a river are hard to beat.</p>
         </div>
 
         <div class="hobby-card">
-          <div class="hobby-icon">🎮</div>
-          <div class="hobby-title">Gaming</div>
+          <div class="hobby-header">
+            <div class="hobby-icon">🎮</div>
+            <div class="hobby-title">Gaming</div>
+          </div>
           <p class="hobby-desc">Board games with friends and video games on Linux. Yes, Linux. It works great, mostly.</p>
         </div>
 
@@ -593,67 +593,67 @@
         <h2>The home lab stack</h2>
         <div class="section-line"></div>
       </div>
-      <div class="skills-grid">
+      <div class="stack-grid">
 
-        <div class="skill-group">
-          <div class="skill-group-title">
+        <div class="stack-group">
+          <div class="stack-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
             Infrastructure
           </div>
-          <div class="skill-tags">
-            <span class="skill-tag">Dell PowerEdge T30</span>
-            <span class="skill-tag">Proxmox VE</span>
-            <span class="skill-tag">Linux VMs</span>
-            <span class="skill-tag">LXC Containers</span>
-            <span class="skill-tag">Firewalla Purple</span>
-            <span class="skill-tag">Unifi Switches</span>
-            <span class="skill-tag">Unifi APs</span>
-            <span class="skill-tag">VLANs</span>
-            <span class="skill-tag">IDS/IPS</span>
+          <div class="tag-list">
+            <span class="tag">Dell PowerEdge T30</span>
+            <span class="tag">Proxmox VE</span>
+            <span class="tag">Linux VMs</span>
+            <span class="tag">LXC Containers</span>
+            <span class="tag">Firewalla Purple</span>
+            <span class="tag">Unifi Switches</span>
+            <span class="tag">Unifi APs</span>
+            <span class="tag">VLANs</span>
+            <span class="tag">IDS/IPS</span>
           </div>
         </div>
 
-        <div class="skill-group">
-          <div class="skill-group-title">
+        <div class="stack-group">
+          <div class="stack-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
             Deployment
           </div>
-          <div class="skill-tags">
-            <span class="skill-tag">Coolify</span>
-            <span class="skill-tag">Docker</span>
-            <span class="skill-tag">Docker Compose</span>
-            <span class="skill-tag">Reverse Proxy</span>
-            <span class="skill-tag">SSL/TLS</span>
-            <span class="skill-tag">Git</span>
-            <span class="skill-tag">Claude.ai</span>
+          <div class="tag-list">
+            <span class="tag">Coolify</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Docker Compose</span>
+            <span class="tag">Reverse Proxy</span>
+            <span class="tag">SSL/TLS</span>
+            <span class="tag">Git</span>
+            <span class="tag">Claude.ai</span>
           </div>
         </div>
 
-        <div class="skill-group">
-          <div class="skill-group-title">
+        <div class="stack-group">
+          <div class="stack-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
             Self-Hosted Services
           </div>
-          <div class="skill-tags">
-            <span class="skill-tag">Coolify</span>
-            <span class="skill-tag">benmingle.com</span>
-            <span class="skill-tag">AMP</span>
-            <span class="skill-tag">Grafana</span>
-            <span class="skill-tag">Prometheus</span>
-            <span class="skill-tag">Loki</span>
-            <span class="skill-tag">Home Assistant</span>
-            <span class="skill-tag">Gitea</span>
-            <span class="skill-tag">Immich</span>
-            <span class="skill-tag">UniFi</span>
-            <span class="skill-tag">Nextcloud</span>
-            <span class="skill-tag">Vaultwarden</span>
-            <span class="skill-tag">Homarr</span>
-            <span class="skill-tag">Mealie</span>
-            <span class="skill-tag">TeamSpeak</span>
-            <span class="skill-tag">RomM</span>
-            <span class="skill-tag">Authentik</span>
-            <span class="skill-tag">Paperless</span>
-            <span class="skill-tag">Joplin</span>
+          <div class="tag-list">
+            <span class="tag">Coolify</span>
+            <span class="tag">benmingle.com</span>
+            <span class="tag">AMP</span>
+            <span class="tag">Grafana</span>
+            <span class="tag">Prometheus</span>
+            <span class="tag">Loki</span>
+            <span class="tag">Home Assistant</span>
+            <span class="tag">Gitea</span>
+            <span class="tag">Immich</span>
+            <span class="tag">UniFi</span>
+            <span class="tag">Nextcloud</span>
+            <span class="tag">Vaultwarden</span>
+            <span class="tag">Homarr</span>
+            <span class="tag">Mealie</span>
+            <span class="tag">TeamSpeak</span>
+            <span class="tag">RomM</span>
+            <span class="tag">Authentik</span>
+            <span class="tag">Paperless</span>
+            <span class="tag">Joplin</span>
           </div>
         </div>
 
@@ -674,67 +674,67 @@
         <div class="project-card">
           <div class="project-top">
             <div class="project-icon">🖥️</div>
+            <h3>Home Lab</h3>
           </div>
-          <h3>Home Lab</h3>
           <p class="project-desc">
             A Proxmox-based home lab running 20+ self-hosted services via Coolify and Docker, with VLANs, IDS/IPS, and Tailscale for secure remote access.
           </p>
           <div class="project-stack">
-            <span class="stack-tag">Proxmox</span>
-            <span class="stack-tag">Coolify</span>
-            <span class="stack-tag">Docker</span>
-            <span class="stack-tag">LXC</span>
-            <span class="stack-tag">AMP</span>
-            <span class="stack-tag">Tailscale</span>
-            <span class="stack-tag">Cloudflare</span>
+            <span class="tag">Proxmox</span>
+            <span class="tag">Coolify</span>
+            <span class="tag">Docker</span>
+            <span class="tag">LXC</span>
+            <span class="tag">AMP</span>
+            <span class="tag">Tailscale</span>
+            <span class="tag">Cloudflare</span>
           </div>
         </div>
 
         <div class="project-card">
           <div class="project-top">
             <div class="project-icon">📊</div>
+            <h3>Observability Stack</h3>
           </div>
-          <h3>Observability Stack</h3>
           <p class="project-desc">
             Full metrics, logs, and dashboards for the home lab. Prometheus scrapes services, Loki aggregates logs, and Grafana ties it all together.
           </p>
           <div class="project-stack">
-            <span class="stack-tag">Grafana</span>
-            <span class="stack-tag">Prometheus</span>
-            <span class="stack-tag">Loki</span>
+            <span class="tag">Grafana</span>
+            <span class="tag">Prometheus</span>
+            <span class="tag">Loki</span>
           </div>
         </div>
 
         <div class="project-card">
           <div class="project-top">
             <div class="project-icon">🔒</div>
+            <h3>Self-Hosted Productivity</h3>
           </div>
-          <h3>Self-Hosted Productivity</h3>
           <p class="project-desc">
             Own your data. Cloud storage, password management, photo library, document scanning, and note-taking, all running on personal infrastructure.
           </p>
           <div class="project-stack">
-            <span class="stack-tag">Nextcloud</span>
-            <span class="stack-tag">Vaultwarden</span>
-            <span class="stack-tag">Immich</span>
-            <span class="stack-tag">Paperless</span>
-            <span class="stack-tag">Joplin</span>
+            <span class="tag">Nextcloud</span>
+            <span class="tag">Vaultwarden</span>
+            <span class="tag">Immich</span>
+            <span class="tag">Paperless</span>
+            <span class="tag">Joplin</span>
           </div>
         </div>
 
         <div class="project-card">
           <div class="project-top">
             <div class="project-icon">🌐</div>
+            <h3>benmingle.com</h3>
           </div>
-          <h3>benmingle.com</h3>
           <p class="project-desc">
             A single-file personal site, self-hosted on Coolify and exposed via Cloudflare tunnel. No frameworks, no build step, no dependencies. Just clean HTML and CSS, deployed with a git push.
           </p>
           <div class="project-stack">
-            <span class="stack-tag">HTML</span>
-            <span class="stack-tag">CSS</span>
-            <span class="stack-tag">Coolify</span>
-            <span class="stack-tag">Self-hosted</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">Coolify</span>
+            <span class="tag">Self-hosted</span>
           </div>
         </div>
 
