@@ -270,6 +270,32 @@
     }
     .stat-label { font-size: .8rem; color: var(--muted); }
 
+    /* ── Life ── */
+    #life { border-top: 1px solid var(--border); }
+    .life-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .hobby-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .hobby-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .hobby-icon { font-size: 1.6rem; margin-bottom: .75rem; }
+    .hobby-title {
+      font-family: var(--font-mono);
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: .4rem;
+    }
+    .hobby-desc { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+
     /* ── Skills ── */
     #skills { border-top: 1px solid var(--border); }
     .skills-grid {
@@ -405,6 +431,7 @@
       <div class="nav-logo">benmingle<span>.</span>com</div>
       <ul class="nav-links">
         <li><a href="#about">about</a></li>
+        <li><a href="#life">life</a></li>
         <li><a href="#skills">stack</a></li>
         <li><a href="#projects">projects</a></li>
         <li><a href="mailto:benjaminjmingle@gmail.com">contact</a></li>
@@ -513,11 +540,52 @@
     </div>
   </section>
 
+  <!-- ── Life ── -->
+  <section id="life">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">02. life</div>
+        <h2>Beyond the keyboard</h2>
+        <div class="section-line"></div>
+      </div>
+      <p style="color: var(--muted); max-width: 600px; font-size: 1rem; line-height: 1.8;">
+        Based in the Denver area. When I'm not at a desk I'm usually outside somewhere with my dog Roxanne, a black lab mix who goes on most adventures and has strong opinions about which trails are worth it.
+      </p>
+      <div class="life-grid">
+
+        <div class="hobby-card">
+          <div class="hobby-icon">⛺</div>
+          <div class="hobby-title">Camping</div>
+          <p class="hobby-desc">Getting out into the Colorado backcountry whenever possible. Roxanne co-pilots every trip.</p>
+        </div>
+
+        <div class="hobby-card">
+          <div class="hobby-icon">🛻</div>
+          <div class="hobby-title">Off-Roading</div>
+          <p class="hobby-desc">Running trails in a truck I've modified and upgraded myself. If it can be wrenched on, it should be.</p>
+        </div>
+
+        <div class="hobby-card">
+          <div class="hobby-icon">🎣</div>
+          <div class="hobby-title">Fly Fishing</div>
+          <p class="hobby-desc">Colorado has no shortage of good water. Slow mornings on a river are hard to beat.</p>
+        </div>
+
+        <div class="hobby-card">
+          <div class="hobby-icon">🎮</div>
+          <div class="hobby-title">Gaming</div>
+          <p class="hobby-desc">Board games with friends and video games on Linux. Yes, Linux. It works great, mostly.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ── Skills ── -->
   <section id="skills">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">02. stack</div>
+        <div class="section-tag">03. stack</div>
         <h2>The home lab stack</h2>
         <div class="section-line"></div>
       </div>
@@ -593,7 +661,7 @@
   <section id="projects">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">03. projects</div>
+        <div class="section-tag">04. projects</div>
         <h2>Things I've built</h2>
         <div class="section-line"></div>
       </div>
