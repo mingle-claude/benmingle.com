@@ -291,7 +291,8 @@
       transition: border-color .2s, transform .2s;
     }
     .hobby-card:hover { border-color: var(--accent2); transform: translateY(-2px); }
-    .hobby-icon { font-size: 1.6rem; margin-bottom: .75rem; }
+    .hobby-header { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
+    .hobby-icon { font-size: 1.6rem; }
     .hobby-title {
       font-family: var(--font-mono);
       font-size: .85rem;
@@ -356,7 +357,7 @@
       transition: border-color .2s, transform .2s;
     }
     .project-card:hover { border-color: var(--accent2); transform: translateY(-3px); }
-    .project-top { display: flex; align-items: flex-start; }
+    .project-top { display: flex; align-items: center; gap: .75rem; }
     .project-icon {
       width: 40px; height: 40px;
       background: rgba(6,182,212,.1);
@@ -558,26 +559,34 @@
       <div class="life-grid">
 
         <div class="hobby-card">
-          <div class="hobby-icon">⛺</div>
-          <div class="hobby-title">Camping</div>
+          <div class="hobby-header">
+            <div class="hobby-icon">⛺</div>
+            <div class="hobby-title">Camping</div>
+          </div>
           <p class="hobby-desc">Getting out into the Colorado backcountry whenever possible. Roxanne co-pilots every trip.</p>
         </div>
 
         <div class="hobby-card">
-          <div class="hobby-icon">🛻</div>
-          <div class="hobby-title">Off-Roading</div>
+          <div class="hobby-header">
+            <div class="hobby-icon">🛻</div>
+            <div class="hobby-title">Off-Roading</div>
+          </div>
           <p class="hobby-desc">Running trails in a truck I've modified and upgraded.</p>
         </div>
 
         <div class="hobby-card">
-          <div class="hobby-icon">🎣</div>
-          <div class="hobby-title">Fly Fishing</div>
+          <div class="hobby-header">
+            <div class="hobby-icon">🎣</div>
+            <div class="hobby-title">Fly Fishing</div>
+          </div>
           <p class="hobby-desc">Colorado has no shortage of good water. Slow mornings on a river are hard to beat.</p>
         </div>
 
         <div class="hobby-card">
-          <div class="hobby-icon">🎮</div>
-          <div class="hobby-title">Gaming</div>
+          <div class="hobby-header">
+            <div class="hobby-icon">🎮</div>
+            <div class="hobby-title">Gaming</div>
+          </div>
           <p class="hobby-desc">Board games with friends and video games on Linux. Yes, Linux. It works great, mostly.</p>
         </div>
 
@@ -674,8 +683,8 @@
         <div class="project-card">
           <div class="project-top">
             <div class="project-icon">🖥️</div>
+            <h3>Home Lab</h3>
           </div>
-          <h3>Home Lab</h3>
           <p class="project-desc">
             A Proxmox-based home lab running 20+ self-hosted services via Coolify and Docker, with VLANs, IDS/IPS, and Tailscale for secure remote access.
           </p>
@@ -693,8 +702,8 @@
         <div class="project-card">
           <div class="project-top">
             <div class="project-icon">📊</div>
+            <h3>Observability Stack</h3>
           </div>
-          <h3>Observability Stack</h3>
           <p class="project-desc">
             Full metrics, logs, and dashboards for the home lab. Prometheus scrapes services, Loki aggregates logs, and Grafana ties it all together.
           </p>
@@ -708,8 +717,8 @@
         <div class="project-card">
           <div class="project-top">
             <div class="project-icon">🔒</div>
+            <h3>Self-Hosted Productivity</h3>
           </div>
-          <h3>Self-Hosted Productivity</h3>
           <p class="project-desc">
             Own your data. Cloud storage, password management, photo library, document scanning, and note-taking, all running on personal infrastructure.
           </p>
@@ -725,8 +734,8 @@
         <div class="project-card">
           <div class="project-top">
             <div class="project-icon">🌐</div>
+            <h3>benmingle.com</h3>
           </div>
-          <h3>benmingle.com</h3>
           <p class="project-desc">
             A single-file personal site, self-hosted on Coolify and exposed via Cloudflare tunnel. No frameworks, no build step, no dependencies. Just clean HTML and CSS, deployed with a git push.
           </p>
