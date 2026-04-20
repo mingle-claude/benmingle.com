@@ -261,11 +261,11 @@
     .stat-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 1.25rem;
-      transition: border-color .2s;
+      transition: border-color .2s, transform .2s;
     }
-    .stat-card:hover { border-color: var(--accent2); }
+    .stat-card:hover { border-color: var(--accent2); transform: translateY(-2px); }
     .stat-num {
       font-family: var(--font-mono);
       font-size: 1.9rem;
@@ -319,10 +319,9 @@
     .skill-group:hover { border-color: var(--accent2); transform: translateY(-2px); }
     .skill-group-title {
       font-family: var(--font-mono);
-      font-size: .78rem;
-      color: var(--accent);
-      letter-spacing: .1em;
-      text-transform: uppercase;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--text);
       margin-bottom: 1rem;
       display: flex;
       align-items: center;
