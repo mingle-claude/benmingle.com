@@ -178,15 +178,15 @@
     .btn-primary {
       background: var(--accent);
       color: #fff;
-      border: 1px solid transparent;
+      border: none;
     }
-    .btn-primary:hover { background: #0891b2; color: #fff; border-color: var(--accent2); transform: translateY(-1px); }
+    .btn-primary:hover { background: #0891b2; color: #fff; transform: translateY(-1px); }
     .btn-ghost {
       background: transparent;
       color: var(--muted);
       border: 1px solid var(--border);
     }
-    .btn-ghost:hover { border-color: var(--accent2); color: var(--accent2); transform: translateY(-1px); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
 
     .hero-scroll {
       position: absolute;
@@ -416,7 +416,7 @@
     /* ── Scrollbar ── */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: #c7d0e8; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 
     /* ── Responsive ── */
