@@ -249,8 +249,17 @@
     .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 1rem; }
     .about-text p:last-child { margin-bottom: 0; }
     .about-text strong { color: var(--text); }
-    .about-links { margin-top: 1.25rem; }
-    .about-links a { font-family: var(--font-mono); font-size: .85rem; margin-right: 1.5rem; }
+    .about-links { margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: .6rem; }
+    .about-links a {
+      font-family: var(--font-mono);
+      font-size: .85rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: .4rem .8rem;
+      transition: border-color .2s, color .2s, transform .2s;
+    }
+    .about-links a:hover { border-color: var(--accent2); color: var(--text); transform: translateY(-2px); }
 
     .about-stats {
       display: grid;
