@@ -660,6 +660,8 @@
             <span class="tag">Coolify</span>
             <span class="tag">benmingle.com</span>
             <span class="tag">AMP</span>
+            <span class="tag">Ollama</span>
+            <span class="tag">Open WebUI</span>
             <span class="tag">Grafana</span>
             <span class="tag">Prometheus</span>
             <span class="tag">Loki</span>
@@ -699,7 +701,7 @@
             <h3>Home Lab</h3>
           </div>
           <p class="project-desc">
-            A Proxmox-based home lab running 20+ self-hosted services with Docker, VLANs, IDS/IPS, and Tailscale. Monitored end-to-end with Prometheus, Loki, and Grafana.
+            A Proxmox-based home lab running 20+ self-hosted services with Docker, VLANs, IDS/IPS, Tailscale, and an NVIDIA RTX A2000 12GB for local AI inference. Monitored end-to-end with Prometheus, Loki, and Grafana.
           </p>
           <div class="project-stack">
             <span class="tag">Proxmox</span>
@@ -707,9 +709,27 @@
             <span class="tag">LXC</span>
             <span class="tag">Tailscale</span>
             <span class="tag">Cloudflare</span>
+            <span class="tag">NVIDIA RTX A2000</span>
             <span class="tag">Grafana</span>
             <span class="tag">Prometheus</span>
             <span class="tag">Loki</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-top">
+            <div class="project-icon">🤖</div>
+            <h3>Local AI</h3>
+          </div>
+          <p class="project-desc">
+            NVIDIA RTX A2000 12GB passed through to a dedicated LXC container running Ollama. Open WebUI provides a local ChatGPT-like interface. Models including gemma2:9b and llama3.1 run fully on-prem, no cloud required.
+          </p>
+          <div class="project-stack">
+            <span class="tag">Ollama</span>
+            <span class="tag">Open WebUI</span>
+            <span class="tag">NVIDIA RTX A2000</span>
+            <span class="tag">GPU Passthrough</span>
+            <span class="tag">LXC</span>
           </div>
         </div>
 
