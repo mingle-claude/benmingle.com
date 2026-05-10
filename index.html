@@ -656,34 +656,34 @@
     <div class="container">
       <span class="section-label">02. Beyond the keyboard</span>
       <h2>Life in Colorado.</h2>
+      <p style="color: var(--muted); max-width: 800px; font-size: 1.15rem; margin-bottom: 2rem;">
+        Based in the Denver area. When I'm not at a desk I'm usually outside somewhere with my dog Roxanne, a black lab mix who goes on most adventures, has strong opinions about which trails are worth it, and will find every body of water within a mile radius.
+      </p>
       <div class="life-list">
         <div class="life-row">
           <div class="life-icon">⛺</div>
           <div class="life-title">Camping</div>
-          <p class="life-desc">Getting out into the Colorado backcountry with Roxanne, my black lab mix who accompanies
-            me on every adventure.</p>
+          <p class="life-desc">Getting out into the Colorado backcountry whenever possible. Roxanne comes on every trip and has opinions about the itinerary.</p>
         </div>
         <div class="life-row">
           <div class="life-icon">🛻</div>
           <div class="life-title">Off-Roading</div>
-          <p class="life-desc">Exploring trails in my modified 2019 Tacoma. If there's no cell service, it's a good day.
-          </p>
+          <p class="life-desc">Running trails in a 2019 Tacoma I've modified and upgraded. If there's no cell service, it's a good day.</p>
         </div>
         <div class="life-row">
           <div class="life-icon">🎣</div>
           <div class="life-title">Fly Fishing</div>
-          <p class="life-desc">Mornings on the river. Colorado has no shortage of incredible water to explore.</p>
+          <p class="life-desc">Colorado has no shortage of good water. Slow mornings on a river are hard to beat.</p>
         </div>
         <div class="life-row">
           <div class="life-icon">⛷️</div>
           <div class="life-title">Skiing</div>
-          <p class="life-desc">Breckenridge is my home resort. There's always a new peak to explore or a line to work
-            on.</p>
+          <p class="life-desc">"Home" resort is Breckenridge. Terrain for every level, so there's always something to work up to.</p>
         </div>
         <div class="life-row">
           <div class="life-icon">🎮</div>
           <div class="life-title">Gaming</div>
-          <p class="life-desc">Board games with friends and video games on Linux. Yes, it works great mostly.</p>
+          <p class="life-desc">Board games with friends and video games on Linux. Yes, Linux. It works great, mostly.</p>
         </div>
       </div>
     </div>
@@ -708,8 +708,13 @@
           <div class="tag-list">
             <span class="tag">Dell PowerEdge T30</span>
             <span class="tag">Proxmox VE</span>
+            <span class="tag">Linux VMs</span>
+            <span class="tag">LXC Containers</span>
             <span class="tag">Firewalla Purple</span>
-            <span class="tag">Unifi Networking</span>
+            <span class="tag">Unifi Switches</span>
+            <span class="tag">Unifi APs</span>
+            <span class="tag">VLANs</span>
+            <span class="tag">IDS/IPS</span>
             <span class="tag">NVIDIA RTX A2000</span>
           </div>
         </div>
@@ -725,8 +730,12 @@
             <span class="tag">Coolify</span>
             <span class="tag">Ansible</span>
             <span class="tag">Docker</span>
+            <span class="tag">Docker Compose</span>
+            <span class="tag">Reverse Proxy</span>
+            <span class="tag">SSL/TLS</span>
             <span class="tag">Git</span>
             <span class="tag">Ollama</span>
+            <span class="tag">Claude.ai</span>
           </div>
         </div>
         <div class="stack-group">
@@ -738,11 +747,27 @@
             Services
           </div>
           <div class="tag-list">
-            <span class="tag">Immich</span>
-            <span class="tag">Gitea</span>
+            <span class="tag">Coolify</span>
+            <span class="tag">benmingle.com</span>
+            <span class="tag">AMP</span>
+            <span class="tag">Ollama</span>
+            <span class="tag">Open WebUI</span>
+            <span class="tag">Grafana</span>
+            <span class="tag">Prometheus</span>
+            <span class="tag">Loki</span>
             <span class="tag">Home Assistant</span>
+            <span class="tag">Gitea</span>
+            <span class="tag">Immich</span>
+            <span class="tag">UniFi</span>
+            <span class="tag">Nextcloud</span>
             <span class="tag">Vaultwarden</span>
+            <span class="tag">Homarr</span>
+            <span class="tag">Mealie</span>
+            <span class="tag">TeamSpeak</span>
+            <span class="tag">RomM</span>
             <span class="tag">Authentik</span>
+            <span class="tag">Paperless</span>
+            <span class="tag">Joplin</span>
           </div>
         </div>
       </div>
@@ -763,15 +788,18 @@
           </div>
         </div>
         <p class="project-desc">
-          A Proxmox-based home lab running 20+ services with Docker, VLANs, IDS/IPS, and local AI inference via NVIDIA
-          RTX A2000. Monitored with Prometheus and Grafana.
+          A Proxmox-based home lab running 20+ self-hosted services with Docker, VLANs, IDS/IPS, Tailscale, and an NVIDIA RTX A2000 12GB for local AI inference. Monitored end-to-end with Prometheus, Loki, and Grafana.
         </p>
         <div class="project-stack">
           <span class="project-tag">Proxmox</span>
           <span class="project-tag">Docker</span>
           <span class="project-tag">LXC</span>
-          <span class="project-tag">NVIDIA AI</span>
+          <span class="project-tag">Tailscale</span>
+          <span class="project-tag">Cloudflare</span>
+          <span class="project-tag">NVIDIA RTX A2000</span>
           <span class="project-tag">Grafana</span>
+          <span class="project-tag">Prometheus</span>
+          <span class="project-tag">Loki</span>
         </div>
       </div>
 
@@ -783,14 +811,54 @@
           </div>
         </div>
         <p class="project-desc">
-          A single-file personal site, self-hosted on Coolify and exposed via Cloudflare tunnel. No frameworks, just
-          clean HTML/CSS.
+          A single-file personal site, self-hosted on Coolify and exposed via Cloudflare tunnel. No frameworks, no build step, no dependencies. Just clean HTML and CSS, deployed with a git push.
         </p>
         <div class="project-stack">
           <span class="project-tag">HTML5</span>
           <span class="project-tag">CSS3</span>
           <span class="project-tag">Coolify</span>
-          <span class="project-tag">Cloudflare</span>
+          <span class="project-tag">Cloudflare Tunnel</span>
+          <span class="project-tag">Self-hosted</span>
+        </div>
+      </div>
+
+      <div class="project-row">
+        <div class="project-header">
+          <div class="project-title">
+            <span>🔒</span>
+            <h3>Self-Hosted Productivity</h3>
+          </div>
+        </div>
+        <p class="project-desc">
+          Own your data. Cloud storage, password management, photo library, document scanning, and note-taking, all running on personal infrastructure.
+        </p>
+        <div class="project-stack">
+          <span class="project-tag">Coolify</span>
+          <span class="project-tag">AMP</span>
+          <span class="project-tag">Nextcloud</span>
+          <span class="project-tag">Vaultwarden</span>
+          <span class="project-tag">Immich</span>
+          <span class="project-tag">Paperless</span>
+          <span class="project-tag">Joplin</span>
+        </div>
+      </div>
+
+      <div class="project-row">
+        <div class="project-header">
+          <div class="project-title">
+            <span>🛠️</span>
+            <h3>Tacoma Build</h3>
+          </div>
+        </div>
+        <p class="project-desc">
+          Ongoing build on a 2019 manual Tacoma. DIY rear seat delete with crash-proof dog crate, and a custom auxiliary power system with solar backup for off-grid capability.
+        </p>
+        <div class="project-stack">
+          <span class="project-tag">DIY</span>
+          <span class="project-tag">12V Electrical</span>
+          <span class="project-tag">Aux Power</span>
+          <span class="project-tag">Solar</span>
+          <span class="project-tag">Rear Seat Delete</span>
         </div>
       </div>
     </div>
