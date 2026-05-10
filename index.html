@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
   <style>
     /* ── Reset & Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,8 +24,7 @@
       --accent:       #14b8a6;
       --accent2:      #d946ef;
       --text:         #f0f0fa;
-      --muted:        #7c7c9e;
-      --font-display: 'Syne', sans-serif;
+      --muted:        #a8a8c8;
       --font-sans:    'Space Grotesk', system-ui, sans-serif;
       --font-mono:    'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
     }
@@ -59,11 +58,11 @@
     .nav-inner {
       max-width: 900px;
       margin: 0 auto;
-      padding: 0 2rem;
-      height: 60px;
+      padding: .65rem 2rem;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: .35rem;
     }
     .nav-logo {
       font-family: var(--font-mono);
@@ -71,13 +70,14 @@
       font-weight: 600;
       color: var(--text);
       letter-spacing: .02em;
-      flex-shrink: 0;
+      text-decoration: none;
     }
     .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; flex-shrink: 0; }
+    .nav-logo:hover { color: var(--text); }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
     .nav-links a {
       font-family: var(--font-sans);
-      font-size: .85rem;
+      font-size: .8rem;
       font-weight: 500;
       color: var(--muted);
       white-space: nowrap;
@@ -90,7 +90,7 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding-top: 60px;
+      padding-top: 90px;
       position: relative;
     }
 
@@ -113,14 +113,14 @@
     }
 
     h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 7vw, 5rem);
-      font-weight: 800;
+      font-family: var(--font-sans);
+      font-size: clamp(2.6rem, 7vw, 4.5rem);
+      font-weight: 700;
       line-height: 1.05;
       letter-spacing: -.02em;
       margin-bottom: .5rem;
     }
-    h1 .dim { color: var(--muted); font-weight: 700; }
+    h1 .dim { color: var(--muted); font-weight: 500; }
 
     .hero-subtitle {
       font-family: var(--font-sans);
@@ -203,10 +203,10 @@
       margin-bottom: .75rem;
     }
     h2 {
-      font-family: var(--font-display);
-      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-      font-weight: 800;
-      letter-spacing: -.02em;
+      font-family: var(--font-sans);
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 600;
+      letter-spacing: -.01em;
       line-height: 1.2;
     }
     .section-intro {
@@ -233,9 +233,9 @@
     .stat-item:nth-child(odd)  { padding-left: 0; border-right: 1px solid var(--border); }
     .stat-item:nth-child(even) { padding-right: 0; }
     .stat-num {
-      font-family: var(--font-display);
+      font-family: var(--font-sans);
       font-size: 2rem;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--accent);
       line-height: 1;
       margin-bottom: .25rem;
@@ -266,6 +266,16 @@
 
     /* ── Life ── */
     #life { border-top: 1px solid var(--border); }
+    #life .bento-item {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      border-top: 1px solid var(--border);
+      padding: 1.25rem .5rem 1.25rem 1rem;
+      box-shadow: none;
+    }
+    #life .bento-item:hover { background: transparent; box-shadow: none; }
+    #life .bento-span-2 { border-left: 2px solid var(--accent2); padding-left: 1rem; }
     .life-header { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
     .life-icon { font-size: 1.6rem; }
     .life-title {
@@ -278,6 +288,15 @@
 
     /* ── Stack ── */
     #stack { border-top: 1px solid var(--border); }
+    #stack .bento-item {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      border-top: 1px solid var(--border);
+      padding: 1.25rem .5rem 1.25rem 0;
+      box-shadow: none;
+    }
+    #stack .bento-item:hover { background: transparent; box-shadow: none; }
     .stack-group-title {
       font-family: var(--font-sans);
       font-size: .9rem;
@@ -302,6 +321,19 @@
 
     /* ── Projects ── */
     #projects { border-top: 1px solid var(--border); }
+    #projects .bento-item {
+      background: var(--bg-card);
+      border: none;
+      border-top: 3px solid var(--accent);
+      border-radius: 0 0 8px 8px;
+      box-shadow: none;
+      transition: background .2s, border-top-color .2s;
+    }
+    #projects .bento-item:hover {
+      background: var(--bg-raised);
+      border-top-color: var(--accent2);
+      box-shadow: none;
+    }
     .project-top { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
     .project-icon { flex-shrink: 0; font-size: 1.4rem; }
     h3 { font-family: var(--font-sans); font-size: .95rem; font-weight: 600; }
@@ -335,16 +367,6 @@
 
     /* ── Responsive ── */
     @media (max-width: 680px) {
-      .nav-inner {
-        justify-content: flex-start;
-        gap: 1.5rem;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-      .nav-inner::-webkit-scrollbar { display: none; }
-      .nav-logo { flex-shrink: 0; }
-      .nav-links { flex-shrink: 0; gap: 1.5rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .bento-grid { grid-template-columns: repeat(2, 1fr); }
       .hero-scroll { display: none; }
@@ -361,7 +383,7 @@
   <!-- ── Nav ── -->
   <nav>
     <div class="nav-inner">
-      <div class="nav-logo">benmingle<span>.</span>com</div>
+      <a href="#" class="nav-logo">benmingle<span>.</span>com</a>
       <ul class="nav-links">
         <li><a href="#about">about</a></li>
         <li><a href="#life">life</a></li>
