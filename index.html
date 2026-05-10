@@ -1,34 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ben Mingle, CISSP, CISA</title>
-  <meta name="description" content="Ben Mingle, CISSP, CISA. Senior GRC & Information Security Compliance Manager with 15+ years in regulatory compliance, risk management, and security assessments. Home lab operator and self-hosting enthusiast." />
-  
+  <meta name="description"
+    content="Ben Mingle, CISSP, CISA. Senior GRC & Information Security Compliance Manager with 15+ years in regulatory compliance, risk management, and security assessments. Home lab operator and self-hosting enthusiast." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" />
-  
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" />
+
   <style>
     :root {
-      --bg:           #ffffff;
-      --text:         #0f172a;
-      --muted:        #64748b;
-      --teal:         #40E0D0; /* Your exact Turquoise */
-      --magenta:      #FD3DB5; /* Your Magenta */
-      --border:       #e2e8f0;
-      --font-sans:    'Plus Jakarta Sans', sans-serif;
-      --font-body:    'Inter', sans-serif;
-      --font-mono:    'JetBrains Mono', monospace;
-      
-      --gradient-tm:  linear-gradient(135deg, var(--teal) 0%, var(--magenta) 100%);
+      --bg: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --teal: #40E0D0;
+      /* Your exact Turquoise */
+      --magenta: #FD3DB5;
+      /* Your Magenta */
+      --border: #e2e8f0;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --gradient-tm: linear-gradient(135deg, var(--teal) 0%, var(--magenta) 100%);
       --gradient-soft: linear-gradient(135deg, rgba(64, 224, 208, 0.05) 0%, rgba(219, 39, 119, 0.05) 100%);
     }
 
     /* ── Reset & Base ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background: var(--bg);
       color: var(--text);
@@ -39,45 +54,77 @@
       overflow-x: hidden;
     }
 
-    h1, h2, h3 { font-family: var(--font-sans); }
-    a { color: var(--teal); text-decoration: none; transition: all .3s; }
-    a:hover { color: var(--magenta); }
+    h1,
+    h2,
+    h3 {
+      font-family: var(--font-sans);
+    }
 
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-    section { padding: 10rem 0; position: relative; }
+    a {
+      color: var(--teal);
+      text-decoration: none;
+      transition: all .3s;
+    }
+
+    a:hover {
+      color: var(--magenta);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 10rem 0;
+      position: relative;
+    }
 
     /* ── Background Mesh ── */
     .bg-mesh {
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       z-index: -1;
       overflow: hidden;
       pointer-events: none;
     }
+
     .mesh-blob {
       position: absolute;
-      width: 800px; height: 800px;
+      width: 800px;
+      height: 800px;
       border-radius: 50%;
       opacity: 0.2;
     }
-    .blob-1 { 
-      top: -200px; right: -200px; 
-      background: radial-gradient(circle at center, var(--teal), transparent 70%); 
+
+    .blob-1 {
+      top: -200px;
+      right: -200px;
+      background: radial-gradient(circle at center, var(--teal), transparent 70%);
     }
-    .blob-2 { 
-      bottom: 0px; left: -200px; 
-      background: radial-gradient(circle at center, var(--magenta), transparent 70%); 
+
+    .blob-2 {
+      bottom: 0px;
+      left: -200px;
+      background: radial-gradient(circle at center, var(--magenta), transparent 70%);
     }
 
     /* ── Navigation ── */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
       background: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
+
     .nav-inner {
       max-width: 1100px;
       margin: 0 auto;
@@ -87,6 +134,7 @@
       align-items: center;
       justify-content: space-between;
     }
+
     .nav-logo {
       font-family: var(--font-sans);
       font-size: 1.25rem;
@@ -96,22 +144,45 @@
       display: block;
       -webkit-tap-highlight-color: transparent;
     }
-    .nav-logo:active { color: var(--magenta); }
-    @media (hover: hover) { .nav-logo:hover { color: var(--magenta); } }
-    @media (hover: none) { .nav-logo:hover { color: var(--text); } }
-    .nav-logo span { 
+
+    .nav-logo:active {
+      color: var(--magenta);
+    }
+
+    @media (hover: hover) {
+      .nav-logo:hover {
+        color: var(--magenta);
+      }
+    }
+
+    @media (hover: none) {
+      .nav-logo:hover {
+        color: var(--text);
+      }
+    }
+
+    .nav-logo span {
       background: var(--gradient-tm);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .nav-links { display: flex; gap: 3rem; list-style: none; }
+
+    .nav-links {
+      display: flex;
+      gap: 3rem;
+      list-style: none;
+    }
+
     .nav-links a {
       font-size: .9rem;
       font-weight: 600;
       color: var(--muted);
       letter-spacing: -0.01em;
     }
-    .nav-links a:hover { color: var(--teal); }
+
+    .nav-links a:hover {
+      color: var(--teal);
+    }
 
     /* ── Hero ── */
     #hero {
@@ -119,6 +190,7 @@
       padding-bottom: 120px;
       text-align: center;
     }
+
     .hero-tag {
       display: inline-block;
       font-family: var(--font-mono);
@@ -132,6 +204,7 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
     }
+
     h1 {
       font-size: clamp(2.5rem, 10vw, 6.5rem);
       font-weight: 900;
@@ -140,11 +213,13 @@
       margin-bottom: 2rem;
       color: var(--text);
     }
+
     h1 .gradient-text {
       background: var(--gradient-tm);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
     .hero-subtitle {
       font-size: clamp(1.25rem, 3vw, 1.75rem);
       font-weight: 500;
@@ -152,8 +227,14 @@
       max-width: 800px;
       margin: 0 auto 3rem;
     }
-    .hero-actions { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
-    
+
+    .hero-actions {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -165,21 +246,25 @@
       transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
     }
+
     .btn-primary {
       background: var(--magenta);
       color: white;
     }
+
     .btn-primary:hover {
       background: var(--teal);
       color: var(--text);
       transform: translateY(-3px);
       box-shadow: 0 10px 25px rgba(64, 224, 208, 0.3);
     }
+
     .btn-secondary {
       background: transparent;
       color: var(--text);
       border: 2px solid var(--border);
     }
+
     .btn-secondary:hover {
       border-color: var(--magenta);
       color: var(--magenta);
@@ -187,13 +272,17 @@
     }
 
     /* ── About & Stats ── */
-    #about { background: #fafafa; }
+    #about {
+      background: #fafafa;
+    }
+
     .about-grid {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 6rem;
       align-items: start;
     }
+
     .section-label {
       display: block;
       font-family: var(--font-mono);
@@ -204,6 +293,7 @@
       letter-spacing: 0.2em;
       margin-bottom: 1.5rem;
     }
+
     h2 {
       font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 800;
@@ -211,6 +301,7 @@
       line-height: 1.1;
       margin-bottom: 2.5rem;
     }
+
     .about-text p {
       font-size: 1.15rem;
       color: var(--muted);
@@ -223,12 +314,17 @@
       flex-direction: column;
       gap: 3rem;
     }
+
     .stat-item {
       padding-left: 2rem;
       border-left: 4px solid var(--border);
       transition: border-color .3s;
     }
-    .stat-item:hover { border-color: var(--magenta); }
+
+    .stat-item:hover {
+      border-color: var(--magenta);
+    }
+
     .stat-val {
       font-size: 2.5rem;
       font-weight: 800;
@@ -236,6 +332,7 @@
       line-height: 1;
       margin-bottom: .5rem;
     }
+
     .stat-label {
       font-size: 1rem;
       font-weight: 600;
@@ -243,7 +340,10 @@
     }
 
     /* ── Life Rows ── */
-    .life-list { margin-top: 4rem; }
+    .life-list {
+      margin-top: 4rem;
+    }
+
     .life-row {
       display: grid;
       grid-template-columns: 100px 1fr 2fr;
@@ -253,22 +353,39 @@
       border-left: 0px solid transparent;
       transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
     }
+
     .life-row:hover {
       background: var(--gradient-soft);
       border-left: 8px solid var(--teal);
       padding-left: 1.5rem;
     }
-    .life-icon { font-size: 2.5rem; }
-    .life-title { font-size: 1.5rem; font-weight: 700; color: var(--text); }
-    .life-desc { font-size: 1.1rem; color: var(--muted); }
+
+    .life-icon {
+      font-size: 2.5rem;
+    }
+
+    .life-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .life-desc {
+      font-size: 1.1rem;
+      color: var(--muted);
+    }
 
     /* ── Stack ── */
-    #stack { background: #fafafa; }
+    #stack {
+      background: #fafafa;
+    }
+
     .stack-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 4rem;
     }
+
     .stack-group-title {
       font-size: 1.25rem;
       font-weight: 800;
@@ -277,8 +394,18 @@
       align-items: center;
       gap: 1rem;
     }
-    .stack-group-title svg { width: 24px; color: var(--teal); }
-    .tag-list { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+    .stack-group-title svg {
+      width: 24px;
+      color: var(--teal);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+    }
+
     .tag {
       font-family: var(--font-mono);
       font-size: .8rem;
@@ -290,6 +417,7 @@
       border-radius: 8px;
       transition: all .3s;
     }
+
     .tag:hover {
       border-color: var(--teal);
       color: var(--teal);
@@ -307,22 +435,47 @@
       border-left: 0px solid transparent;
       transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
     }
+
     .project-row:hover {
       background: var(--gradient-soft);
       border-left: 8px solid var(--magenta);
       padding-left: 2rem;
     }
+
     .project-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 2rem;
     }
-    .project-title { display: flex; align-items: center; gap: 1.5rem; }
-    .project-title span { font-size: 2.5rem; }
-    .project-title h3 { font-size: 2rem; font-weight: 800; }
-    .project-desc { font-size: 1.2rem; color: var(--muted); max-width: 800px; }
-    .project-stack { display: flex; flex-wrap: wrap; gap: .6rem; }
+
+    .project-title {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .project-title span {
+      font-size: 2.5rem;
+    }
+
+    .project-title h3 {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .project-desc {
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 800px;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+    }
+
     .project-tag {
       font-family: var(--font-mono);
       font-size: .75rem;
@@ -333,32 +486,89 @@
     }
 
     /* ── Footer ── */
-    footer { padding: 8rem 0; border-top: 1px solid var(--border); }
+    footer {
+      padding: 8rem 0;
+      border-top: 1px solid var(--border);
+    }
+
     .footer-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 2rem;
     }
-    .footer-left { font-weight: 700; font-size: 1.1rem; }
-    .footer-left span { color: var(--magenta); }
-    .social-links { display: flex; gap: 2rem; }
-    .social-links a { color: var(--muted); transition: color .3s; }
-    .social-links a:hover { color: var(--teal); }
-    .social-links svg { width: 24px; }
+
+    .footer-left {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .footer-left span {
+      color: var(--magenta);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .social-links a {
+      color: var(--muted);
+      transition: color .3s;
+    }
+
+    .social-links a:hover {
+      color: var(--teal);
+    }
+
+    .social-links svg {
+      width: 24px;
+    }
 
     @media (max-width: 900px) {
-      section { padding: 6rem 0; }
-      .about-grid { grid-template-columns: 1fr; gap: 4rem; }
-      .life-row { grid-template-columns: 60px 1fr; gap: 1.5rem; }
-      .life-desc { grid-column: 1 / -1; }
-      .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: flex-end; }
-      .nav-links a { font-size: .8rem; }
-      .nav-inner { flex-wrap: wrap; height: auto; padding: 1rem 1.5rem; gap: .5rem; }
-      h1 { font-size: 3rem; }
+      section {
+        padding: 6rem 0;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+      }
+
+      .life-row {
+        grid-template-columns: 60px 1fr;
+        gap: 1.5rem;
+      }
+
+      .life-desc {
+        grid-column: 1 / -1;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .nav-links a {
+        font-size: .8rem;
+      }
+
+      .nav-inner {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 1rem 1.5rem;
+        gap: .5rem;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <div class="bg-mesh">
@@ -370,7 +580,7 @@
   <nav>
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">benmingle<span>.</span>com</a>
-      
+
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#life">Life</a></li>
@@ -386,13 +596,15 @@
     <div class="container">
       <div class="hero-tag">Always building something</div>
       <h1>Ben Mingle<span class="gradient-text">.</span></h1>
-      <div style="font-family: var(--font-mono); font-size: 1.1rem; color: var(--muted); letter-spacing: 0.05em; margin-bottom: 3rem;">
-        <span style="color: var(--teal);">~/</span> cissp · cisa · grc · security · nerd · gamer · outdoorsman
+      <div
+        style="font-family: var(--font-mono); font-size: 1.1rem; color: var(--muted); letter-spacing: 0.05em; margin-bottom: 3rem;">
+        <span style="color: var(--teal);">~/</span> security · nerd · gamer · outdoorsman
       </div>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary">Explore Projects</a>
         <a href="mailto:benjaminjmingle@gmail.com" class="btn btn-secondary">Get In Touch</a>
-        <a href="https://www.linkedin.com/in/benjaminmingle/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/benjaminmingle/" target="_blank" rel="noopener noreferrer"
+          class="btn btn-secondary">LinkedIn</a>
       </div>
     </div>
   </section>
@@ -405,13 +617,16 @@
           <span class="section-label">01. Background</span>
           <h2>A bit about me.</h2>
           <p>
-            I've been working in information security and GRC for over 15 years. Currently, I'm an Information Security Compliance Manager; before that, I spent most of my career as a consultant.
+            I've been working in information security and GRC for over 15 years. Currently, I'm an Information Security
+            Compliance Manager; before that, I spent most of my career as a consultant.
           </p>
           <p>
-            My consulting years took me through Booz Allen Hamilton, Ernst & Young, Protiviti, Coalfire, Optiv, Schellman, and Online Business Systems. I've worked with Fortune 100 companies and federal agencies on everything from security assessments to technical testing across cloud and on-prem environments.
+            My consulting years took me through Booz Allen Hamilton, Ernst & Young, Protiviti, Coalfire, Optiv,
+            Schellman, and Online Business Systems. I've worked with Fortune 100 companies and federal agencies on
+            everything from security assessments to technical testing across cloud and on-prem environments.
           </p>
           <p>
-            Outside of the day job, I'm a tinkerer. I run a self-hosted home lab on Proxmox, automate everything possible, and firmly believe that owning your infrastructure is a right. Privacy is a human right, and encryption is essential.
+            Outside of the day job, I'm a shameless tinkerer. I run a self-hosted home lab on Proxmox, automate whatever I can, and firmly believe that owning your infrastructure is a right, not a luxury. If it can be scripted, it should be. Privacy is a human right. Encryption is not a crime. Key disclosure laws are unethical.
           </p>
         </div>
         <div class="stats-list">
@@ -425,11 +640,11 @@
           </div>
           <div class="stat-item">
             <div class="stat-val">8</div>
-            <div class="stat-label">Consulting & Industry Roles</div>
+            <div class="stat-label">Employers across Big 4 consulting & boutique firms</div>
           </div>
           <div class="stat-item">
             <div class="stat-val">∞</div>
-            <div class="stat-label">Home lab services running</div>
+            <div class="stat-label">Home lab services (send help)</div>
           </div>
         </div>
       </div>
@@ -445,12 +660,14 @@
         <div class="life-row">
           <div class="life-icon">⛺</div>
           <div class="life-title">Camping</div>
-          <p class="life-desc">Getting out into the Colorado backcountry with Roxanne, my black lab mix who accompanies me on every adventure.</p>
+          <p class="life-desc">Getting out into the Colorado backcountry with Roxanne, my black lab mix who accompanies
+            me on every adventure.</p>
         </div>
         <div class="life-row">
           <div class="life-icon">🛻</div>
           <div class="life-title">Off-Roading</div>
-          <p class="life-desc">Exploring trails in my modified 2019 Tacoma. If there's no cell service, it's a good day.</p>
+          <p class="life-desc">Exploring trails in my modified 2019 Tacoma. If there's no cell service, it's a good day.
+          </p>
         </div>
         <div class="life-row">
           <div class="life-icon">🎣</div>
@@ -460,7 +677,8 @@
         <div class="life-row">
           <div class="life-icon">⛷️</div>
           <div class="life-title">Skiing</div>
-          <p class="life-desc">Breckenridge is my home resort. There's always a new peak to explore or a line to work on.</p>
+          <p class="life-desc">Breckenridge is my home resort. There's always a new peak to explore or a line to work
+            on.</p>
         </div>
         <div class="life-row">
           <div class="life-icon">🎮</div>
@@ -479,7 +697,12 @@
       <div class="stack-grid">
         <div class="stack-group">
           <div class="stack-group-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="8" rx="2" />
+              <rect x="2" y="14" width="20" height="8" rx="2" />
+              <line x1="6" y1="6" x2="6.01" y2="6" />
+              <line x1="6" y1="18" x2="6.01" y2="18" />
+            </svg>
             Infrastructure
           </div>
           <div class="tag-list">
@@ -492,7 +715,10 @@
         </div>
         <div class="stack-group">
           <div class="stack-group-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+            </svg>
             Deployment
           </div>
           <div class="tag-list">
@@ -505,7 +731,10 @@
         </div>
         <div class="stack-group">
           <div class="stack-group-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3" />
+              <path d="M12 1v4M12 19v4M1 12h4M19 12h4" />
+            </svg>
             Services
           </div>
           <div class="tag-list">
@@ -525,7 +754,7 @@
     <div class="container">
       <span class="section-label">04. Projects</span>
       <h2>Things I've built.</h2>
-      
+
       <div class="project-row">
         <div class="project-header">
           <div class="project-title">
@@ -534,7 +763,8 @@
           </div>
         </div>
         <p class="project-desc">
-          A Proxmox-based home lab running 20+ services with Docker, VLANs, IDS/IPS, and local AI inference via NVIDIA RTX A2000. Monitored with Prometheus and Grafana.
+          A Proxmox-based home lab running 20+ services with Docker, VLANs, IDS/IPS, and local AI inference via NVIDIA
+          RTX A2000. Monitored with Prometheus and Grafana.
         </p>
         <div class="project-stack">
           <span class="project-tag">Proxmox</span>
@@ -553,7 +783,8 @@
           </div>
         </div>
         <p class="project-desc">
-          A single-file personal site, self-hosted on Coolify and exposed via Cloudflare tunnel. No frameworks, just clean HTML/CSS.
+          A single-file personal site, self-hosted on Coolify and exposed via Cloudflare tunnel. No frameworks, just
+          clean HTML/CSS.
         </p>
         <div class="project-stack">
           <span class="project-tag">HTML5</span>
@@ -572,10 +803,17 @@
         <div class="footer-left">benmingle<span>.</span>com</div>
         <div class="social-links">
           <a href="https://github.com/bjmingle" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+            </svg>
           </a>
           <a href="https://www.linkedin.com/in/benjaminmingle/" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
           </a>
         </div>
       </div>
@@ -583,4 +821,5 @@
   </footer>
 
 </body>
+
 </html>
