@@ -347,8 +347,7 @@
     .social-links a:hover { color: var(--teal); }
     .social-links svg { width: 24px; }
 
-    /* ── Mobile ── */
-    #nav-toggle-check { display: none; }
+    #mobile-menu { display: none; }
 
     @media (max-width: 900px) {
       section { padding: 6rem 0; }
@@ -376,11 +375,8 @@
         height: 100%;
         list-style: none;
       }
-      #nav-toggle-check:checked ~ .nav-links-wrapper { display: flex; }
+      #mobile-menu:target { display: flex; }
       .nav-toggle { display: flex; z-index: 10000; }
-      #nav-toggle-check:checked ~ .nav-toggle span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-      #nav-toggle-check:checked ~ .nav-toggle span:nth-child(2) { opacity: 0; }
-      #nav-toggle-check:checked ~ .nav-toggle span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
       h1 { font-size: 3.5rem; }
       .nav-links a { font-size: 1.5rem; }
     }
@@ -398,22 +394,22 @@
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">benmingle<span>.</span>com</a>
       
-      <input type="checkbox" id="nav-toggle-check">
-      <label for="nav-toggle-check" class="nav-toggle">
+      <a href="#mobile-menu" class="nav-toggle">
         <span></span>
         <span></span>
         <span></span>
-      </label>
+      </a>
 
-      <label for="nav-toggle-check" class="nav-links-wrapper">
+      <div id="mobile-menu" class="nav-links-wrapper">
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="#life">Life</a></li>
           <li><a href="#stack">Stack</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="mailto:benjaminjmingle@gmail.com">Contact</a></li>
+          <li style="margin-top: 2rem;"><a href="#" style="color: var(--magenta); font-size: 1rem;">✕ Close Menu</a></li>
         </ul>
-      </label>
+      </div>
     </div>
   </nav>
 
