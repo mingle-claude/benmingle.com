@@ -11,21 +11,23 @@
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
   <style>
     /* ── Reset & Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #f5f7ff;
-      --bg-card:   #ffffff;
-      --border:    #dde3f5;
-      --accent:    #06b6d4;
-      --accent2:   #d946ef;
-      --text:      #111827;
-      --muted:     #6b7280;
-      --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
-      --font-sans: 'Inter', system-ui, sans-serif;
+      --bg:           #08080f;
+      --bg-card:      #0f0f1c;
+      --bg-raised:    #15152a;
+      --border:       #1e1e38;
+      --accent:       #14b8a6;
+      --accent2:      #d946ef;
+      --text:         #f0f0fa;
+      --muted:        #7c7c9e;
+      --font-display: 'Syne', sans-serif;
+      --font-sans:    'Space Grotesk', system-ui, sans-serif;
+      --font-mono:    'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
     }
 
     html { scroll-behavior: smooth; }
@@ -40,7 +42,7 @@
     }
 
     a { color: var(--accent); text-decoration: none; transition: color .2s; }
-    a:hover { color: #67e8f9; }
+    a:hover { color: #5eead4; }
 
     /* ── Layout ── */
     .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
@@ -51,8 +53,7 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(245, 247, 255, 0.88);
-      backdrop-filter: blur(12px);
+      background: var(--bg);
       border-bottom: 1px solid var(--border);
     }
     .nav-inner {
@@ -70,14 +71,16 @@
       font-weight: 600;
       color: var(--text);
       letter-spacing: .02em;
+      flex-shrink: 0;
     }
     .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; flex-shrink: 0; }
     .nav-links a {
+      font-family: var(--font-sans);
       font-size: .85rem;
-      font-family: var(--font-mono);
+      font-weight: 500;
       color: var(--muted);
-      letter-spacing: .05em;
+      white-space: nowrap;
       transition: color .2s;
     }
     .nav-links a:hover { color: var(--text); }
@@ -89,68 +92,43 @@
       align-items: center;
       padding-top: 60px;
       position: relative;
-      overflow: hidden;
-    }
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(6,182,212,.12) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 20% 70%, rgba(217,70,239,.10) 0%, transparent 70%),
-        radial-gradient(ellipse 30% 40% at 50% 10%, rgba(217,70,239,.06) 0%, transparent 60%);
-      pointer-events: none;
     }
 
-    /* Subtle grid */
-    #hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(6,182,212,.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(6,182,212,.06) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
+    .hero-bar {
+      width: 48px;
+      height: 3px;
+      background: var(--accent2);
+      margin-bottom: 1.5rem;
+      border-radius: 2px;
     }
-
-    .hero-content { position: relative; z-index: 1; }
 
     .hero-tag {
-      font-family: var(--font-mono);
-      font-size: .8rem;
+      font-family: var(--font-sans);
+      font-size: .75rem;
+      font-weight: 500;
       color: var(--accent2);
       letter-spacing: .12em;
       text-transform: uppercase;
       margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-    }
-    .hero-tag::before {
-      content: '';
-      display: inline-block;
-      width: 28px; height: 1px;
-      background: var(--accent2);
     }
 
     h1 {
-      font-size: clamp(2.6rem, 6vw, 4.2rem);
-      font-weight: 700;
-      line-height: 1.1;
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 1.05;
       letter-spacing: -.02em;
       margin-bottom: .5rem;
     }
-    h1 .dim { color: var(--muted); font-weight: 300; }
+    h1 .dim { color: var(--muted); font-weight: 700; }
 
     .hero-subtitle {
-      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-family: var(--font-sans);
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
       color: var(--muted);
       font-weight: 400;
       margin-bottom: 1.5rem;
-      font-family: var(--font-mono);
     }
-    .hero-subtitle .accent { color: var(--accent); }
 
     .hero-desc {
       font-size: 1.05rem;
@@ -169,18 +147,18 @@
       padding: .65rem 1.4rem;
       border-radius: 6px;
       font-size: .9rem;
-      font-family: var(--font-mono);
+      font-family: var(--font-sans);
       font-weight: 500;
-      letter-spacing: .02em;
+      letter-spacing: .01em;
       transition: all .2s;
       cursor: pointer;
     }
     .btn-primary {
       background: var(--accent);
-      color: #fff;
+      color: #08080f;
       border: none;
     }
-    .btn-primary:hover { background: #0891b2; color: #fff; transform: translateY(-1px); }
+    .btn-primary:hover { background: #0f9688; color: #08080f; transform: translateY(-1px); }
     .btn-ghost {
       background: transparent;
       color: var(--muted);
@@ -198,12 +176,12 @@
       align-items: center;
       gap: .4rem;
       color: var(--muted);
-      font-family: var(--font-mono);
+      font-family: var(--font-sans);
       font-size: .7rem;
       letter-spacing: .1em;
       animation: bounce 2s infinite;
     }
-    .hero-scroll svg { width: 16px; opacity: .5; }
+    .hero-scroll svg { width: 16px; opacity: .4; }
     @keyframes bounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50%       { transform: translateX(-50%) translateY(6px); }
@@ -211,31 +189,32 @@
 
     /* ── Section headers ── */
     .section-header { margin-bottom: 3rem; }
-    .section-tag {
-      font-family: var(--font-mono);
-      font-size: .75rem;
-      color: var(--accent);
-      letter-spacing: .12em;
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-sans);
+      font-size: .7rem;
+      font-weight: 600;
       text-transform: uppercase;
+      letter-spacing: .15em;
+      color: var(--accent);
+      border-left: 2px solid var(--accent);
+      padding-left: .6rem;
       margin-bottom: .75rem;
     }
     h2 {
+      font-family: var(--font-display);
       font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: -.02em;
       line-height: 1.2;
-    }
-    .section-line {
-      width: 40px; height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      margin-top: .75rem;
-      border-radius: 2px;
     }
     .section-intro {
       color: var(--muted);
       max-width: 600px;
       font-size: 1rem;
       line-height: 1.8;
+      margin-top: 1rem;
     }
 
     /* ── About ── */
@@ -249,73 +228,59 @@
     .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 1rem; }
     .about-text p:last-child { margin-bottom: 0; }
 
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-    .stat-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.25rem;
-      transition: border-color .2s, transform .2s;
-    }
-    .stat-card:hover { border-color: var(--accent2); transform: translateY(-2px); }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; }
+    .stat-item { border-top: 1px solid var(--border); padding: 1rem; }
+    .stat-item:nth-child(odd)  { padding-left: 0; border-right: 1px solid var(--border); }
+    .stat-item:nth-child(even) { padding-right: 0; }
     .stat-num {
-      font-family: var(--font-mono);
-      font-size: 1.9rem;
-      font-weight: 700;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
       color: var(--accent);
       line-height: 1;
-      margin-bottom: .2rem;
+      margin-bottom: .25rem;
     }
-    .stat-label { font-size: .8rem; color: var(--muted); }
+    .stat-label { font-size: .8rem; color: var(--muted); line-height: 1.4; }
 
-    /* ── Life ── */
-    #life { border-top: 1px solid var(--border); }
-    .life-grid {
+    /* ── Bento Grid (shared) ── */
+    .bento-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
       margin-top: 2rem;
     }
-    .life-card {
+    .bento-item {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 10px;
       padding: 1.5rem;
-      transition: border-color .2s, transform .2s;
+      box-shadow: inset 3px 0 0 transparent;
+      transition: background .2s, box-shadow .2s;
     }
-    .life-card:hover { border-color: var(--accent2); transform: translateY(-2px); }
+    .bento-item:hover {
+      background: var(--bg-raised);
+      box-shadow: inset 3px 0 0 var(--accent);
+    }
+    .bento-span-2 { grid-column: span 2; }
+    .bento-full   { grid-column: 1 / -1; }
+
+    /* ── Life ── */
+    #life { border-top: 1px solid var(--border); }
     .life-header { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
     .life-icon { font-size: 1.6rem; }
     .life-title {
-      font-family: var(--font-mono);
-      font-size: .85rem;
+      font-family: var(--font-sans);
+      font-size: .9rem;
       font-weight: 600;
       color: var(--text);
     }
-    .life-desc { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+    .life-desc { font-size: .875rem; color: var(--muted); line-height: 1.65; }
 
     /* ── Stack ── */
     #stack { border-top: 1px solid var(--border); }
-    .stack-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.25rem;
-    }
-    .stack-group {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      transition: border-color .2s, transform .2s;
-    }
-    .stack-group:hover { border-color: var(--accent2); transform: translateY(-2px); }
     .stack-group-title {
-      font-family: var(--font-mono);
-      font-size: .85rem;
+      font-family: var(--font-sans);
+      font-size: .9rem;
       font-weight: 600;
       color: var(--text);
       margin-bottom: 1rem;
@@ -323,54 +288,28 @@
       align-items: center;
       gap: .5rem;
     }
-    .stack-group-title svg { width: 14px; }
+    .stack-group-title svg { width: 14px; stroke: var(--muted); }
     .tag-list { display: flex; flex-wrap: wrap; gap: .5rem; }
     .tag {
       font-family: var(--font-mono);
       font-size: .72rem;
       color: var(--accent);
-      background: rgba(6,182,212,.07);
-      border: 1px solid rgba(6,182,212,.2);
+      background: rgba(20, 184, 166, .08);
+      border: 1px solid rgba(20, 184, 166, .2);
       padding: .2rem .55rem;
       border-radius: 4px;
     }
 
     /* ── Projects ── */
     #projects { border-top: 1px solid var(--border); }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.25rem;
-    }
-    .project-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      transition: border-color .2s, transform .2s;
-    }
-    .project-card:hover { border-color: var(--accent2); transform: translateY(-2px); }
-    .project-top { display: flex; align-items: center; gap: .75rem; }
-    .project-icon {
-      flex-shrink: 0;
-      font-size: 1.4rem;
-    }
-    h3 {
-      font-family: var(--font-mono);
-      font-size: .85rem;
-      font-weight: 600;
-    }
-    .project-desc { font-size: .9rem; color: var(--muted); line-height: 1.7; }
-    .project-stack { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; }
+    .project-top { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
+    .project-icon { flex-shrink: 0; font-size: 1.4rem; }
+    h3 { font-family: var(--font-sans); font-size: .95rem; font-weight: 600; }
+    .project-desc { font-size: .9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+    .project-stack { display: flex; flex-wrap: wrap; gap: .4rem; }
 
     /* ── Footer ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 3rem 0;
-    }
+    footer { border-top: 1px solid var(--border); padding: 3rem 0; }
     .footer-inner {
       max-width: 900px;
       margin: 0 auto;
@@ -381,18 +320,10 @@
       gap: 2rem;
       flex-wrap: wrap;
     }
-    .footer-left {
-      font-family: var(--font-mono);
-      font-size: .82rem;
-      color: var(--muted);
-    }
+    .footer-left { font-family: var(--font-sans); font-size: .82rem; color: var(--muted); }
     .footer-left span { color: var(--accent); }
     .social-links { display: flex; gap: 1rem; }
-    .social-links a {
-      color: var(--muted);
-      transition: color .2s;
-      display: flex; align-items: center;
-    }
+    .social-links a { color: var(--muted); transition: color .2s; display: flex; align-items: center; }
     .social-links a:hover { color: var(--accent); }
     .social-links svg { width: 20px; }
 
@@ -404,9 +335,24 @@
 
     /* ── Responsive ── */
     @media (max-width: 680px) {
+      .nav-inner {
+        justify-content: flex-start;
+        gap: 1.5rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .nav-inner::-webkit-scrollbar { display: none; }
+      .nav-logo { flex-shrink: 0; }
+      .nav-links { flex-shrink: 0; gap: 1.5rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .nav-links { display: none; }
+      .bento-grid { grid-template-columns: repeat(2, 1fr); }
       .hero-scroll { display: none; }
+    }
+    @media (max-width: 480px) {
+      .bento-grid  { grid-template-columns: 1fr; }
+      .bento-span-2 { grid-column: span 1; }
+      .bento-full   { grid-column: span 1; }
     }
   </style>
 </head>
@@ -430,10 +376,11 @@
   <section id="hero">
     <div class="container">
       <div class="hero-content">
+        <div class="hero-bar"></div>
         <div class="hero-tag">Always building something</div>
         <h1>Ben Mingle<span class="dim">, CISSP, CISA.</span></h1>
         <div class="hero-subtitle">
-          <span class="accent">~/</span> grc · security · nerd · gamer · outdoorsman
+          grc · security · nerd · gamer · outdoorsman
         </div>
         <p class="hero-desc">
           Information Security Compliance Manager with 15+ years in regulatory compliance,
@@ -467,9 +414,8 @@
   <section id="about">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">01. about</div>
+        <div class="section-label">About</div>
         <h2>A bit about me</h2>
-        <div class="section-line"></div>
       </div>
       <div class="about-grid">
         <div class="about-text">
@@ -498,35 +444,35 @@
         </div>
         <div>
           <div class="about-stats">
-            <div class="stat-card">
+            <div class="stat-item">
               <div class="stat-num">15+</div>
               <div class="stat-label">Years in InfoSec &amp; GRC</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-item">
               <div class="stat-num">2</div>
               <div class="stat-label">Active certifications (CISSP · CISA)</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-item">
               <div class="stat-num">8</div>
               <div class="stat-label">Employers across Big 4 consulting &amp; boutique firms</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-item">
               <div class="stat-num">∞</div>
               <div class="stat-label">Home lab services (send help)</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-item">
               <div class="stat-num">1</div>
               <div class="stat-label">Black lab co-pilot (Roxanne, she insists)</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-item">
               <div class="stat-num">5</div>
               <div class="stat-label">Peaks at Breckenridge, all on the agenda</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-item">
               <div class="stat-num">0</div>
               <div class="stat-label">Frameworks used to build this site</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-item">
               <div class="stat-num">1</div>
               <div class="stat-label">Linux daily driver, no I won't switch back</div>
             </div>
@@ -540,16 +486,15 @@
   <section id="life">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">02. life</div>
+        <div class="section-label">Life</div>
         <h2>Beyond the keyboard</h2>
-        <div class="section-line"></div>
       </div>
       <p class="section-intro">
         Based in the Denver area. When I'm not at a desk I'm usually outside somewhere with my dog Roxanne, a black lab mix who goes on most adventures, has strong opinions about which trails are worth it, and will find every body of water within a mile radius.
       </p>
-      <div class="life-grid">
+      <div class="bento-grid">
 
-        <div class="life-card">
+        <div class="bento-item bento-span-2">
           <div class="life-header">
             <div class="life-icon">⛺</div>
             <div class="life-title">Camping</div>
@@ -557,7 +502,7 @@
           <p class="life-desc">Getting out into the Colorado backcountry whenever possible. Roxanne comes on every trip and has opinions about the itinerary.</p>
         </div>
 
-        <div class="life-card">
+        <div class="bento-item">
           <div class="life-header">
             <div class="life-icon">🛻</div>
             <div class="life-title">Off-Roading</div>
@@ -565,7 +510,7 @@
           <p class="life-desc">Running trails in a 2019 Tacoma I've modified and upgraded.</p>
         </div>
 
-        <div class="life-card">
+        <div class="bento-item">
           <div class="life-header">
             <div class="life-icon">🎣</div>
             <div class="life-title">Fly Fishing</div>
@@ -573,7 +518,7 @@
           <p class="life-desc">Colorado has no shortage of good water. Slow mornings on a river are hard to beat.</p>
         </div>
 
-        <div class="life-card">
+        <div class="bento-item">
           <div class="life-header">
             <div class="life-icon">⛷️</div>
             <div class="life-title">Skiing</div>
@@ -581,7 +526,7 @@
           <p class="life-desc">"Home" resort is Breckenridge. Terrain for every level, so there's always something to work up to.</p>
         </div>
 
-        <div class="life-card">
+        <div class="bento-item">
           <div class="life-header">
             <div class="life-icon">🎮</div>
             <div class="life-title">Gaming</div>
@@ -589,7 +534,7 @@
           <p class="life-desc">Board games with friends and video games on Linux. Yes, Linux. It works great, mostly.</p>
         </div>
 
-        <div class="life-card">
+        <div class="bento-item bento-span-2">
           <div class="life-header">
             <div class="life-icon">🐾</div>
             <div class="life-title">Dog Dad</div>
@@ -601,17 +546,16 @@
     </div>
   </section>
 
-  <!-- ── Skills ── -->
+  <!-- ── Stack ── -->
   <section id="stack">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">03. stack</div>
+        <div class="section-label">Stack</div>
         <h2>The home lab stack</h2>
-        <div class="section-line"></div>
       </div>
-      <div class="stack-grid">
+      <div class="bento-grid">
 
-        <div class="stack-group">
+        <div class="bento-item bento-span-2">
           <div class="stack-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
             Infrastructure
@@ -630,7 +574,7 @@
           </div>
         </div>
 
-        <div class="stack-group">
+        <div class="bento-item bento-span-2">
           <div class="stack-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
             Deployment
@@ -648,7 +592,7 @@
           </div>
         </div>
 
-        <div class="stack-group">
+        <div class="bento-item bento-full">
           <div class="stack-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
             Self-Hosted Services
@@ -686,13 +630,12 @@
   <section id="projects">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">04. projects</div>
+        <div class="section-label">Projects</div>
         <h2>Things I've built</h2>
-        <div class="section-line"></div>
       </div>
-      <div class="projects-grid">
+      <div class="bento-grid">
 
-        <div class="project-card">
+        <div class="bento-item bento-span-2">
           <div class="project-top">
             <div class="project-icon">🖥️</div>
             <h3>Home Lab</h3>
@@ -713,7 +656,24 @@
           </div>
         </div>
 
-        <div class="project-card">
+        <div class="bento-item bento-span-2">
+          <div class="project-top">
+            <div class="project-icon">🛠️</div>
+            <h3>Tacoma Build</h3>
+          </div>
+          <p class="project-desc">
+            Ongoing build on a 2019 manual Tacoma. DIY rear seat delete with crash-proof dog crate, and a custom auxiliary power system with solar backup for off-grid capability.
+          </p>
+          <div class="project-stack">
+            <span class="tag">DIY</span>
+            <span class="tag">12V Electrical</span>
+            <span class="tag">Aux Power</span>
+            <span class="tag">Solar</span>
+            <span class="tag">Rear Seat Delete</span>
+          </div>
+        </div>
+
+        <div class="bento-item bento-span-2">
           <div class="project-top">
             <div class="project-icon">🌐</div>
             <h3>benmingle.com</h3>
@@ -730,7 +690,7 @@
           </div>
         </div>
 
-        <div class="project-card">
+        <div class="bento-item bento-span-2">
           <div class="project-top">
             <div class="project-icon">🔒</div>
             <h3>Self-Hosted Productivity</h3>
@@ -746,23 +706,6 @@
             <span class="tag">Immich</span>
             <span class="tag">Paperless</span>
             <span class="tag">Joplin</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-top">
-            <div class="project-icon">🛠️</div>
-            <h3>Tacoma Build</h3>
-          </div>
-          <p class="project-desc">
-            Ongoing build on a 2019 manual Tacoma. DIY rear seat delete with crash-proof dog crate, and a custom auxiliary power system with solar backup for off-grid capability.
-          </p>
-          <div class="project-stack">
-            <span class="tag">DIY</span>
-            <span class="tag">12V Electrical</span>
-            <span class="tag">Aux Power</span>
-            <span class="tag">Solar</span>
-            <span class="tag">Rear Seat Delete</span>
           </div>
         </div>
 
