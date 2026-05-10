@@ -16,7 +16,6 @@
       --text:         #0f172a;
       --muted:        #64748b;
       --teal:         #40E0D0; /* Your exact Turquoise */
-      --teal-light:   #40E0D0; /* Your exact Turquoise */
       --magenta:      #e01b8b; /* Slightly darker for text readability */
       --magenta-light:#FD3DB5; /* Your Magenta */
       --border:       #e2e8f0;
@@ -25,7 +24,7 @@
       --font-mono:    'JetBrains Mono', monospace;
       
       --gradient-tm:  linear-gradient(135deg, var(--teal) 0%, var(--magenta) 100%);
-      --gradient-soft: linear-gradient(135deg, rgba(13, 148, 136, 0.05) 0%, rgba(219, 39, 119, 0.05) 100%);
+      --gradient-soft: linear-gradient(135deg, rgba(64, 224, 208, 0.05) 0%, rgba(219, 39, 119, 0.05) 100%);
     }
 
     /* ── Reset & Base ── */
@@ -41,7 +40,7 @@
       overflow-x: hidden;
     }
 
-    h1, h2, h3, h4 { font-family: var(--font-sans); }
+    h1, h2, h3 { font-family: var(--font-sans); }
     a { color: var(--teal); text-decoration: none; transition: all .3s; }
     a:hover { color: var(--magenta); }
 
@@ -64,7 +63,7 @@
     }
     .blob-1 { 
       top: -200px; right: -200px; 
-      background: radial-gradient(circle at center, var(--teal-light), transparent 70%); 
+      background: radial-gradient(circle at center, var(--teal), transparent 70%); 
     }
     .blob-2 { 
       bottom: 0px; left: -200px; 
@@ -97,7 +96,6 @@
       color: var(--text);
       display: block;
     }
-    .nav-logo:hover { color: var(--text); }
     .nav-logo span { 
       background: var(--gradient-tm);
       -webkit-background-clip: text;
@@ -172,7 +170,7 @@
       color: white;
     }
     .btn-primary:hover {
-      background: var(--teal-light);
+      background: var(--teal);
       color: var(--text);
       transform: translateY(-3px);
       box-shadow: 0 10px 25px rgba(64, 224, 208, 0.3);
@@ -197,16 +195,13 @@
       align-items: start;
     }
     .section-label {
-      display: inline-block;
+      display: block;
       font-family: var(--font-mono);
       font-size: .8rem;
       color: var(--text);
-      background: var(--teal-light);
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      padding: 0.3rem 1rem;
-      border-radius: 4px;
+      letter-spacing: 0.2em;
       margin-bottom: 1.5rem;
     }
     h2 {
