@@ -86,7 +86,11 @@
     .nav-links a:hover { color: var(--text); }
 
     /* ── Hero ── */
-    #hero { padding-top: 90px; }
+    #hero {
+      min-height: 100vh;
+      padding-top: 90px;
+      position: relative;
+    }
 
     .hero-bar {
       width: 48px;
@@ -160,6 +164,25 @@
     }
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
 
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      color: var(--muted);
+      font-size: .7rem;
+      letter-spacing: .1em;
+      animation: bounce 2s infinite;
+    }
+    .hero-scroll svg { width: 16px; opacity: .4; }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
 
     /* ── Section headers ── */
     .section-header { margin-bottom: 3rem; }
@@ -382,6 +405,10 @@
           </a>
         </div>
       </div>
+    </div>
+    <div class="hero-scroll">
+      scroll
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </div>
   </section>
 
